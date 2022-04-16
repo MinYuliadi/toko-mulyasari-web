@@ -11,7 +11,7 @@ const ListProductComponent = () => {
       {dataProduct.map((item, index) => {
         return (
           <>
-            <div key={index} className="gap-2 flex flex-col pb-5">
+            <div key={index + item.id} className="gap-2 flex flex-col pb-5">
               <div className="border shadow-md p-4 h-[18rem]">
                 <div className="flex justify-center w-full">
                   <img className="h-[10rem]" src={`${item.image_url}`} alt="" />

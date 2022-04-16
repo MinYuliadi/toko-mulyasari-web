@@ -6,6 +6,7 @@ import LayoutComponent from '../components/layoutComponent';
 import ProductPage from '../pages/product';
 import DetailProduct from '../pages/detailProduct';
 import FormPembelian from '../pages/formPembelian';
+import KeranjangPage from '../pages/keranjang';
 
 const RoutesHandler = () => {
   return (
@@ -28,6 +29,11 @@ const RoutesHandler = () => {
           <Route exact path={`/formulir-pembelian`}>
             <LayoutComponent>
               <FormPembelian />
+            </LayoutComponent>
+          </Route>
+          <Route exact path={`/keranjang`}>
+            <LayoutComponent>
+              <KeranjangPage />
             </LayoutComponent>
           </Route>
         </Switch>

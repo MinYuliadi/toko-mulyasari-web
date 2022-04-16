@@ -10,7 +10,7 @@ const InputTextComponent = (props) => {
           type={`${props.type}`}
           className={props.classInput}
           value={props.valInput}
-          onChange={(e) => handleChange(`${props.param}`, e)}
+          onChange={props.param}
           required
         />
       </div>

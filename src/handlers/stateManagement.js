@@ -5,10 +5,16 @@ export const DataContext = createContext();
 export const DataProvider = (props) => {
   const [currentID, setCurrentID] = useState(null);
   const [detailProduct, setDetailProduct] = useState({});
+  const [countCookiesProduct, setCountCookiesProduct] = useState(0);
   const [inputForm, setInputForm] = useState({
     name: '',
     phoneNumber: '',
     address: ''
+  });
+  const [inputDetailProduct, setInputDetailProduct] = useState({
+    qty: 0,
+    descriptionRequest: '',
+    dateTime: ''
   });
   const [dataProduct, setDataProduct] = useState([
     {
@@ -87,7 +93,11 @@ export const DataProvider = (props) => {
         detailProduct,
         setDetailProduct,
         inputForm,
-        setInputForm
+        setInputForm,
+        inputDetailProduct,
+        setInputDetailProduct,
+        countCookiesProduct,
+        setCountCookiesProduct
       }}>
       {props.children}
     </DataContext.Provider>

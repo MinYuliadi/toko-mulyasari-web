@@ -5,7 +5,7 @@ import FunctionHandler from '../handlers/functionHandler';
 
 const FormPembelian = () => {
   const {inputForm} = useContext(DataContext);
-  const {handleSubmitForm} = FunctionHandler();
+  const {handleSubmitForm, handleChange} = FunctionHandler();
   const varClassInput =
     'border focus:outline-none px-2 flex justify-center items-center rounded-sm';
 
@@ -22,7 +22,7 @@ const FormPembelian = () => {
             labelName="Nama"
             classInput={varClassInput}
             valInput={inputForm.name}
-            param="name"
+            param={(e) => handleChange('name', e)}
           />
           <InputTextComponent
             classLabel=""
@@ -30,7 +30,7 @@ const FormPembelian = () => {
             labelName="Nomor Whatsapp"
             classInput={varClassInput}
             valInput={inputForm.phoneNumber}
-            param="phoneNumber"
+            param={(e) => handleChange('phoneNumber', e)}
           />
           <InputTextComponent
             classLabel=""
@@ -38,7 +38,7 @@ const FormPembelian = () => {
             labelName="Alamat"
             classInput={varClassInput}
             valInput={inputForm.address}
-            param="address"
+            param={(e) => handleChange('address', e)}
           />
           <button className="w-full bg-indigo-600 text-white rounded-md h-10">Simpan</button>
         </form>
