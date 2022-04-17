@@ -61,14 +61,14 @@ const LandingPage = () => {
                     <Link
                       to="/formulir-pembelian"
                       className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Edit Formulir
+                      Formulir
                     </Link>
                   )}
                   {Cookies.get('user') === undefined && (
                     <Link
                       to="/formulir-pembelian"
                       className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Formulir Pembelian
+                      Formulir
                     </Link>
                   )}
                 </div>

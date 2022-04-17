@@ -6,17 +6,11 @@ import Cookies from 'js-cookie';
 const FunctionHandler = () => {
   const {
     dataProduct,
-    setDataProduct,
-    currentID,
-    setCurrentID,
-    detailProduct,
     setDetailProduct,
     inputForm,
     setInputForm,
     inputDetailProduct,
     setInputDetailProduct,
-    countCookiesProduct,
-    setCountCookiesProduct,
     inputSearch,
     setInputSearch
   } = useContext(DataContext);
