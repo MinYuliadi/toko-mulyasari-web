@@ -46,7 +46,7 @@ const FunctionHandler = () => {
     const findProductbyID = dataProduct.find((x) => x.id === idFromCookie);
     Cookies.set('clickedProduct', JSON.stringify(findProductbyID));
     setDetailProduct(findProductbyID);
-    history.push(`/detail-product/${idFromCookie}`);
+    window.location.replace(`/detail-product/${idFromCookie}`);
   };
 
   const handleChange = (key, event) => {
@@ -86,21 +86,31 @@ const FunctionHandler = () => {
 
   const handleAddtoCart = (event) => {
     event.preventDefault();
-    if (inputDetailProduct.qty < 1) {
-      alert('minimal pemesanan Product (Quantity) adalah 1');
-    } else if (inputDetailProduct.qty >= 1) {
-      const parseClickedProduct = JSON.parse(Cookies.get(`clickedProduct`));
-      const parseClickedID = parseInt(Cookies.get('clickedID'));
-      const parseProductCart = JSON.parse(Cookies.get('productCart'));
-      Cookies.set(
-        `product${parseClickedID}`,
-        JSON.stringify({...parseClickedProduct, ...inputDetailProduct})
-      );
-      const parseFromProductID = JSON.parse(Cookies.get(`product${parseClickedID}`));
+    if (Cookies.get('user') === undefined) {
+      if (
+        window.confirm(
+          'Kamu belum mengisi formulir pembelian. klik ok untuk isi sekarang atau klik batal untuk melihat lihat dulu'
+        )
+      ) {
+        history.push(`/formulir-pembelian`);
+      }
+    } else {
+      if (inputDetailProduct.qty < 1) {
+        alert('minimal pemesanan Product (Quantity) adalah 1');
+      } else if (inputDetailProduct.qty >= 1) {
+        const parseClickedProduct = JSON.parse(Cookies.get(`clickedProduct`));
+        const parseClickedID = parseInt(Cookies.get('clickedID'));
+        const parseProductCart = JSON.parse(Cookies.get('productCart'));
+        Cookies.set(
+          `product${parseClickedID}`,
+          JSON.stringify({...parseClickedProduct, ...inputDetailProduct})
+        );
+        const parseFromProductID = JSON.parse(Cookies.get(`product${parseClickedID}`));
 
-      Cookies.set('productCart', JSON.stringify([...parseProductCart, parseFromProductID]));
-      alert('Sukses, belanjaanmu sudah dimasukan kedalam keranjang');
-      window.location.reload();
+        Cookies.set('productCart', JSON.stringify([...parseProductCart, parseFromProductID]));
+        alert('Sukses, belanjaanmu sudah dimasukan kedalam keranjang');
+        window.location.reload();
+      }
     }
   };
 
@@ -116,19 +126,23 @@ const FunctionHandler = () => {
 
   const handleCheckOut = () => {
     const token = '5129558354:AAH1NVwWiTxtLK06K9WIHsO936gOdpIo3b4';
-    const chatID = 5109962924;
-    // const chatID = -1001684634338;
+    // const chatID = 5109962924;
+    const chatID = -1001684634338;
     const parseUserCookies = JSON.parse(Cookies.get('user'));
     const parseProductCart = JSON.parse(Cookies.get('productCart'));
     const filterParseProductCart = parseProductCart.filter((x) => x.name !== '');
-    let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&text=Nama%20Customer:%20${
+    const totalPembayaran = filterParseProductCart.reduce(
+      (a, b) => a + parseInt(b.qty || 0) * parseInt(b.price || 0),
+      0
+    );
+    let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&text=Nama%20Customer%20:%20${
       parseUserCookies.name
-    }%0ANomor%20WhatsApp:%20${parseUserCookies.phoneNumber}%0AAlamat%20Customer:%20${
+    }%0ANomor%20WhatsApp%20:%20${parseUserCookies.phoneNumber}%0AAlamat%20Customer%20:%20${
       parseUserCookies.address
     }%0A%0ABarang%20yang%20dipesan:%0A%0A${filterParseProductCart.map((item, index) => {
       return `No:%20${index + 1}%0ANama:%20${item.name}%0AJumlah:%20${item.qty}%0AKeterangan:%20${
         item.descriptionRequest
-      }%0A%0A`;
+      }%0A%0ATotal%20Pembayaran%20:%20${currencyFormat(totalPembayaran)}`;
     })}`;
     const api = new XMLHttpRequest();
     api.open('GET', url, true);

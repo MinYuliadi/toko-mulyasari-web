@@ -11,7 +11,7 @@ const FormPembelian = () => {
 
   return (
     <>
-      <div className="flex flex-col w-full px-[10rem] justify-center items-center text-gray-600 font-ubuntu text-base">
+      <div className="flex flex-col pb-36 w-full px-[10rem] justify-center items-center text-gray-600 font-ubuntu text-base">
         <form
           method="post"
           onSubmit={handleSubmitForm}

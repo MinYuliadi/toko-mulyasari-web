@@ -4,6 +4,7 @@ import {Popover, Transition} from '@headlessui/react';
 import {MenuIcon, XIcon} from '@heroicons/react/outline';
 import {HomeIcon} from '@heroicons/react/outline';
 import {Link} from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const navigation = [
   {name: 'Product', href: '/product'},
@@ -56,11 +57,20 @@ const LandingPage = () => {
                       {item.name}
                     </Link>
                   ))}
-                  <Link
-                    to="/formulir-pembelian"
-                    className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Formulir
-                  </Link>
+                  {Cookies.get('user') !== undefined && (
+                    <Link
+                      to="/formulir-pembelian"
+                      className="font-medium text-indigo-600 hover:text-indigo-500">
+                      Edit Formulir
+                    </Link>
+                  )}
+                  {Cookies.get('user') === undefined && (
+                    <Link
+                      to="/formulir-pembelian"
+                      className="font-medium text-indigo-600 hover:text-indigo-500">
+                      Formulir Pembelian
+                    </Link>
+                  )}
                 </div>
               </nav>
             </div>
@@ -101,11 +111,20 @@ const LandingPage = () => {
                       </Link>
                     ))}
                   </div>
-                  <Link
-                    to="/formulir-pembelian"
-                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
-                    Formulir Pembelian
-                  </Link>
+                  {Cookies.get('user') !== undefined && (
+                    <Link
+                      to="/formulir-pembelian"
+                      className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
+                      Edit Formulir
+                    </Link>
+                  )}
+                  {Cookies.get('user') === undefined && (
+                    <Link
+                      to="/formulir-pembelian"
+                      className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
+                      Formulir Pembelian
+                    </Link>
+                  )}
                 </div>
               </Popover.Panel>
             </Transition>

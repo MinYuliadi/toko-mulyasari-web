@@ -9,9 +9,13 @@ import DetailProduct from '../pages/detailProduct';
 import FormPembelian from '../pages/formPembelian';
 import KeranjangPage from '../pages/keranjang';
 import {Redirect} from 'react-router-dom';
+import PageNotFound from '../pages/notFoundPage';
+import NavigationBar from '../components/navigation';
+import FaqPage from '../pages/faqPage';
+import TentangKamiPage from '../pages/tentangKamiPage';
 
 const RoutesHandler = () => {
-  const KeranjangHandler = (props) => {
+  const KeranjangRoute = ({...props}) => {
     if (Cookies.get('productCart') === undefined) {
       alert(
         'harap isi Formulir Pembelian sebelum masuk ke keranjang atau sebelum melakukan pemesanan'
@@ -21,7 +25,7 @@ const RoutesHandler = () => {
       alert('anda belum memasukan apapun ke keranjang');
       return <Redirect to={`/product`} />;
     } else if (JSON.parse(Cookies.get('productCart')).length > 1) {
-      return <>{props.children}</>;
+      return <Route {...props} />;
     }
   };
 
@@ -47,13 +51,25 @@ const RoutesHandler = () => {
               <FormPembelian />
             </LayoutComponent>
           </Route>
-          <KeranjangHandler>
-            <Route exact path={`/keranjang`}>
-              <LayoutComponent>
-                <KeranjangPage />
-              </LayoutComponent>
-            </Route>
-          </KeranjangHandler>
+          <Route exact path={`/faq-page`}>
+            <LayoutComponent>
+              <FaqPage />
+            </LayoutComponent>
+          </Route>
+          <Route exact path={`/tentang-kami`}>
+            <LayoutComponent>
+              <TentangKamiPage />
+            </LayoutComponent>
+          </Route>
+          <KeranjangRoute exact path={`/keranjang`}>
+            <LayoutComponent>
+              <KeranjangPage />
+            </LayoutComponent>
+          </KeranjangRoute>
+          <Route path={`*`}>
+            <NavigationBar />
+            <PageNotFound />
+          </Route>
         </Switch>
       </DataProvider>
     </BrowserRouter>

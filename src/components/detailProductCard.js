@@ -12,12 +12,12 @@ const DetailProductCard = () => {
 
   return (
     <>
-      <div className="w-full h-[25rem] flex px-[10rem] text-gray-600 font-medium text-lg">
-        <div className="flex w-full">
+      <div className="w-full h-full lg:h-[25rem] flex px-5 lg:px-[10rem] text-gray-600 font-medium text-lg">
+        <div className="flex flex-col items-center justify-center lg:flex-row w-full">
           <div className="h-full p-5 pt-0">
-            <img src={parseFromJSON.image_url} alt="" />
+            <img className="h-[15rem] lg:h-fit" src={parseFromJSON.image_url} alt="" />
           </div>
-          <div className="w-full flex flex-col gap-3 p-6 justify-start items-start">
+          <div className="w-full flex flex-col gap-3 items-center justify-center p-6 lg:justify-start lg:items-start">
             <span>{parseFromJSON.name}</span>
             <span>Kategori : {parseFromJSON.category}</span>
             <span>Harga : {currencyFormat(parseFromJSON.price)}</span>
