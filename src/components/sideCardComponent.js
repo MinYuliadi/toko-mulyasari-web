@@ -17,7 +17,7 @@ const SideCardComponent = (props) => {
               <button
                 onClick={handleDelete}
                 value={props.dateTime}
-                className="h-12 w-full bg-rose-600 rounded-md text-white">
+                className="h-12 w-full bg-rose-600 rounded-md font-medium text-base text-white">
                 Hapus
               </button>
             </div>

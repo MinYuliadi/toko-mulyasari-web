@@ -38,7 +38,7 @@ const KeranjangPage = () => {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col justify-center items-center gap-3">
+      <div className="w-full h-full flex flex-col justify-center items-center gap-3 text-base font-medium text-gray-700">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 sm:p-7 md:px-10 lg:-mt-5 lg:px-10 w-full h-full p-2 gap-3">
           {listItem}
         </div>
@@ -56,8 +56,10 @@ const KeranjangPage = () => {
               </span>
             </div>
           </div>
-          <button onClick={handleCheckOut} className="h-12 bg-indigo-600 rounded-md text-white">
-            CheckOut
+          <button
+            onClick={handleCheckOut}
+            className="h-12 bg-indigo-600 text-base font-medium rounded-md text-white">
+            Check Out
           </button>
         </div>
       </div>

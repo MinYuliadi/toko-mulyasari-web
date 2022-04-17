@@ -3,7 +3,7 @@ import ScanBarcode from '../assets/icon/wa.link_y4k8cq.png';
 
 const TentangKamiPage = () => {
   return (
-    <div className="lg:text-3xl flex-col text-justify p-3 sm:px-12 lg:px-24 sm:text-2xl text-gray-700 font-Ubuntu min-h-full font-medium flex w-full justify-center items-center">
+    <div className="lg:text-3xl flex-col gap-3 pb-24 text-justify p-3 sm:px-12 lg:px-24 sm:text-2xl text-gray-700 font-Ubuntu min-h-full font-medium flex w-full justify-center items-center">
       <span>
         Masih dalam tahap Pengembangan, silahkan hubungi Developer untuk info lebih lanjut dengan
         click Link di bawah ini!
