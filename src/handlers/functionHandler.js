@@ -16,7 +16,9 @@ const FunctionHandler = () => {
     inputDetailProduct,
     setInputDetailProduct,
     countCookiesProduct,
-    setCountCookiesProduct
+    setCountCookiesProduct,
+    inputSearch,
+    setInputSearch
   } = useContext(DataContext);
 
   const history = useHistory();
@@ -31,6 +33,10 @@ const FunctionHandler = () => {
       style: 'currency',
       currency: 'IDR'
     }).format(number);
+  };
+
+  const handleChangeSearch = (key, event) => {
+    setInputSearch({...inputSearch, [key]: event.target.value});
   };
 
   const handleDetail = (event) => {
@@ -78,19 +84,24 @@ const FunctionHandler = () => {
     });
   };
 
-  const handleAddtoCart = () => {
-    const parseClickedProduct = JSON.parse(Cookies.get(`clickedProduct`));
-    const parseClickedID = parseInt(Cookies.get('clickedID'));
-    const parseProductCart = JSON.parse(Cookies.get('productCart'));
-    Cookies.set(
-      `product${parseClickedID}`,
-      JSON.stringify({...parseClickedProduct, ...inputDetailProduct})
-    );
-    const parseFromProductID = JSON.parse(Cookies.get(`product${parseClickedID}`));
+  const handleAddtoCart = (event) => {
+    event.preventDefault();
+    if (inputDetailProduct.qty < 1) {
+      alert('minimal pemesanan Product (Quantity) adalah 1');
+    } else if (inputDetailProduct.qty >= 1) {
+      const parseClickedProduct = JSON.parse(Cookies.get(`clickedProduct`));
+      const parseClickedID = parseInt(Cookies.get('clickedID'));
+      const parseProductCart = JSON.parse(Cookies.get('productCart'));
+      Cookies.set(
+        `product${parseClickedID}`,
+        JSON.stringify({...parseClickedProduct, ...inputDetailProduct})
+      );
+      const parseFromProductID = JSON.parse(Cookies.get(`product${parseClickedID}`));
 
-    Cookies.set('productCart', JSON.stringify([...parseProductCart, parseFromProductID]));
-    console.log(JSON.parse(Cookies.get('productCart')));
-    window.location.reload();
+      Cookies.set('productCart', JSON.stringify([...parseProductCart, parseFromProductID]));
+      alert('Sukses, belanjaanmu sudah dimasukan kedalam keranjang');
+      window.location.reload();
+    }
   };
 
   const handleDelete = (event) => {
@@ -105,7 +116,8 @@ const FunctionHandler = () => {
 
   const handleCheckOut = () => {
     const token = '5129558354:AAH1NVwWiTxtLK06K9WIHsO936gOdpIo3b4';
-    const chatID = -1001684634338;
+    const chatID = 5109962924;
+    // const chatID = -1001684634338;
     const parseUserCookies = JSON.parse(Cookies.get('user'));
     const parseProductCart = JSON.parse(Cookies.get('productCart'));
     const filterParseProductCart = parseProductCart.filter((x) => x.name !== '');
@@ -121,6 +133,27 @@ const FunctionHandler = () => {
     const api = new XMLHttpRequest();
     api.open('GET', url, true);
     api.send();
+
+    alert(
+      'Admin telah menerima pesananmu, mohon ditunggu ya. Admin akan mengirim pesan kepadamu lewat aplikasi Whatsapp.'
+    );
+    Cookies.set(
+      'productCart',
+      JSON.stringify([
+        {
+          name: '',
+          phoneNumber: '',
+          address: '',
+          descriptionRequest: '',
+          id: '',
+          page: '',
+          price: '',
+          qty: '',
+          dateTime: ''
+        }
+      ])
+    );
+    history.push(`/product`);
   };
 
   return {
@@ -131,7 +164,8 @@ const FunctionHandler = () => {
     handleChangeDetailProduct,
     handleAddtoCart,
     handleDelete,
-    handleCheckOut
+    handleCheckOut,
+    handleChangeSearch
   };
 };
 

@@ -4,8 +4,8 @@ import ListProductComponent from '../components/listProductComponent';
 const ProductPage = () => {
   return (
     <>
-      <SearchComponent />
-      <ListProductComponent />
+      <SearchComponent key={1} />
+      <ListProductComponent key={2} />
     </>
   );
 };
