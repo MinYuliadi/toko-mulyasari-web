@@ -1,7 +1,4 @@
-import FunctionHandler from '../handlers/functionHandler';
-
 const InputTextComponent = (props) => {
-  const {handleChange} = FunctionHandler();
   return (
     <>
       <div className="flex flex-col gap-1">
