@@ -11,11 +11,11 @@ const FormPembelian = () => {
 
   return (
     <>
-      <div className="flex flex-col pb-36 w-full px-[10rem] justify-center items-center text-gray-600 font-ubuntu text-base">
+      <div className="flex flex-col p-3 pb-36 w-full md:px-[10rem] justify-center items-center text-gray-600 font-ubuntu text-base">
         <form
           method="post"
           onSubmit={handleSubmitForm}
-          className="flex w-1/2 p-10 rounded-md shadow-lg shadow-zinc-400 flex-col gap-3">
+          className="flex w-[17rem] sm:w-[30rem] p-10 rounded-md shadow-lg shadow-zinc-400 flex-col gap-3">
           <InputTextComponent
             classLabel=""
             type="text"

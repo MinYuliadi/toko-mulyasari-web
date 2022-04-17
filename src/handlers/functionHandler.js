@@ -134,10 +134,10 @@ const FunctionHandler = () => {
     }%0ANomor%20WhatsApp%20:%20${parseUserCookies.phoneNumber}%0AAlamat%20Customer%20:%20${
       parseUserCookies.address
     }%0A%0ABarang%20yang%20dipesan:%0A%0A${filterParseProductCart.map((item, index) => {
-      return `No:%20${index + 1}%0ANama:%20${item.name}%0AJumlah:%20${item.qty}%0AKeterangan:%20${
-        item.descriptionRequest
-      }%0A%0ATotal%20Pembayaran%20:%20${currencyFormat(totalPembayaran)}`;
-    })}`;
+      return `No:%20${index + 1}%0ANama%20:%20${item.name}%0AJumlah%20:%20${
+        item.qty
+      }%0AKeterangan%20:%20${item.descriptionRequest}%0A%0A`;
+    })}Total%20Pembayaran%20:%20${currencyFormat(totalPembayaran)}`;
     const api = new XMLHttpRequest();
     api.open('GET', url, true);
     api.send();
