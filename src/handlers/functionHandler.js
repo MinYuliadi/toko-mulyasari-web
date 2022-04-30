@@ -119,9 +119,8 @@ const FunctionHandler = () => {
   };
 
   const handleCheckOut = () => {
-    const token = '5129558354:AAH1NVwWiTxtLK06K9WIHsO936gOdpIo3b4';
-    // const chatID = 5109962924;
-    const chatID = -1001684634338;
+    const token = process.env.React_APP_BotToken;
+    const chatID = process.env.React_APP_GroupChatID;
     const parseUserCookies = JSON.parse(Cookies.get('user'));
     const parseProductCart = JSON.parse(Cookies.get('productCart'));
     const filterParseProductCart = parseProductCart.filter((x) => x.name !== '');
