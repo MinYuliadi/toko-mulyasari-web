@@ -10,7 +10,7 @@ const FooterLayout = () => {
       <footer
         className={`min-h-[5rem] flex gap-5 flex-col sm:flex-row justify-between p-12 items-center relative bottom-0 h-fit bg-zinc-800 text-white`}>
         <div className="text-3xl">
-          <Link to={`/faq-page`}>FAQ</Link>
+          <Link to={`/toko-mulyasari-web/faq-page`}>FAQ</Link>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 items-center">
           {`Kunjungi kami juga di : `}
