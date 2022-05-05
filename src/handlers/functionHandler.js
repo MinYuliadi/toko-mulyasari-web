@@ -40,7 +40,7 @@ const FunctionHandler = () => {
     const findProductbyID = dataProduct.find((x) => x.id === idFromCookie);
     Cookies.set('clickedProduct', JSON.stringify(findProductbyID));
     setDetailProduct(findProductbyID);
-    window.location.replace(`/toko-mulyasari-web/detail-product/${idFromCookie}`);
+    window.location.replace(`/detail-product/${idFromCookie}`);
   };
 
   const handleChange = (key, event) => {
@@ -54,7 +54,7 @@ const FunctionHandler = () => {
   const handleSubmitForm = (event) => {
     event.preventDefault();
     Cookies.set('user', JSON.stringify(inputForm));
-    history.push(`/toko-mulyasari-web/product`);
+    history.push(`/product`);
     Cookies.set(
       'productCart',
       JSON.stringify([
@@ -86,7 +86,7 @@ const FunctionHandler = () => {
           'Kamu belum mengisi formulir pembelian. klik ok untuk isi sekarang atau klik batal untuk melihat lihat dulu'
         )
       ) {
-        history.push(`/toko-mulyasari-web/formulir-pembelian`);
+        history.push(`/formulir-pembelian`);
       }
     } else {
       if (inputDetailProduct.qty < 1) {
@@ -160,7 +160,7 @@ const FunctionHandler = () => {
         }
       ])
     );
-    history.push(`/toko-mulyasari-web/product`);
+    history.push(`/product`);
   };
 
   return {

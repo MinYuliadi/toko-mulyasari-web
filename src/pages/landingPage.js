@@ -7,9 +7,9 @@ import {Link} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const navigation = [
-  {name: 'Product', href: '/toko-mulyasari-web/product'},
-  {name: 'Keranjang', href: '/toko-mulyasari-web/keranjang'},
-  {name: 'Tentang Kami', href: '/toko-mulyasari-web/tentang-kami'}
+  {name: 'Product', href: '/product'},
+  {name: 'Keranjang', href: '/keranjang'},
+  {name: 'Tentang Kami', href: '/tentang-kami'}
 ];
 
 const LandingPage = () => {
@@ -34,7 +34,7 @@ const LandingPage = () => {
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link
-                      to="/toko-mulyasari-web/"
+                      to="/"
                       className="flex items-center gap-3 font-medium text-base text-gray-700">
                       <span className="sr-only">Workflow</span>
                       <HomeIcon className="h-8 w-auto sm:h-10" />
@@ -59,14 +59,14 @@ const LandingPage = () => {
                   ))}
                   {Cookies.get('user') !== undefined && (
                     <Link
-                      to="/toko-mulyasari-web/formulir-pembelian"
+                      to="/formulir-pembelian"
                       className="font-medium text-indigo-600 hover:text-indigo-500">
                       Formulir
                     </Link>
                   )}
                   {Cookies.get('user') === undefined && (
                     <Link
-                      to="/toko-mulyasari-web/formulir-pembelian"
+                      to="/formulir-pembelian"
                       className="font-medium text-indigo-600 hover:text-indigo-500">
                       Formulir
                     </Link>
@@ -113,14 +113,14 @@ const LandingPage = () => {
                   </div>
                   {Cookies.get('user') !== undefined && (
                     <Link
-                      to="/toko-mulyasari-web/formulir-pembelian"
+                      to="/formulir-pembelian"
                       className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                       Edit Formulir
                     </Link>
                   )}
                   {Cookies.get('user') === undefined && (
                     <Link
-                      to="/toko-mulyasari-web/formulir-pembelian"
+                      to="/formulir-pembelian"
                       className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                       Formulir Pembelian
                     </Link>
@@ -143,7 +143,7 @@ const LandingPage = () => {
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <Link
-                    to="/toko-mulyasari-web/product"
+                    to="/product"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
                     Ayo Mulai
                   </Link>
