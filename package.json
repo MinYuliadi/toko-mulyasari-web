@@ -1,6 +1,6 @@
 {
   "name": "toko-mulyasari-web",
-  "homepage": "https://yuliadi.sanbercodeapp.com",
+  "homepage": "https://https://minyuliadi.github.io/toko-mulyasari-web/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^13.5.0",
     "cookies": "^0.8.0",
+    "gh-pages": "^3.2.3",
     "js-cookie": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,6 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
