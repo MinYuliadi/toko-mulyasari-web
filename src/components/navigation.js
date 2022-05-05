@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const navigationLink = [
-  {name: 'Product', href: '/product'},
-  {name: 'Keranjang', href: '/keranjang'},
-  {name: 'Tentang Kami', href: '/tentang-kami'}
+  {name: 'Product', href: '/toko-mulyasari-web/product'},
+  {name: 'Keranjang', href: '/toko-mulyasari-web/keranjang'},
+  {name: 'Tentang Kami', href: '/toko-mulyasari-web/tentang-kami'}
 ];
 
 const NavigationBar = () => {
@@ -24,7 +24,7 @@ const NavigationBar = () => {
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link
-                      to="/"
+                      to="/toko-mulyasari-web/"
                       className="flex items-center gap-3 font-medium text-base text-gray-500 hover:text-gray-900">
                       <span className="sr-only">Workflow</span>
                       <HomeIcon className="h-8 w-auto sm:h-10" />
@@ -49,14 +49,14 @@ const NavigationBar = () => {
                   ))}
                   {Cookies.get('user') !== undefined && (
                     <Link
-                      to="/formulir-pembelian"
+                      to="/toko-mulyasari-web/formulir-pembelian"
                       className="font-medium text-indigo-600 hover:text-indigo-500">
                       Edit Formulir
                     </Link>
                   )}
                   {Cookies.get('user') === undefined && (
                     <Link
-                      to="/formulir-pembelian"
+                      to="/toko-mulyasari-web/formulir-pembelian"
                       className="font-medium text-indigo-600 hover:text-indigo-500">
                       Formulir Pembelian
                     </Link>
@@ -81,7 +81,7 @@ const NavigationBar = () => {
                     <div>
                       <div className={`font-medium text-base text-gray-700 flex flex-row gap-2`}>
                         <HomeIcon className="h-6 w-6" aria-hidden="true" />
-                        <Link to="/">Toko Mulyasari</Link>
+                        <Link to="/toko-mulyasari-web/">Toko Mulyasari</Link>
                       </div>
                     </div>
                     <div className="-mr-2">
@@ -103,14 +103,14 @@ const NavigationBar = () => {
                   </div>
                   {Cookies.get('user') !== undefined && (
                     <Link
-                      to="/formulir-pembelian"
+                      to="/toko-mulyasari-web/formulir-pembelian"
                       className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                       Edit Formulir
                     </Link>
                   )}
                   {Cookies.get('user') === undefined && (
                     <Link
-                      to="/formulir-pembelian"
+                      to="/toko-mulyasari-web/formulir-pembelian"
                       className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                       Formulir Pembelian
                     </Link>

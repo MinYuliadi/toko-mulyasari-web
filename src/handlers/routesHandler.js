@@ -20,10 +20,10 @@ const RoutesHandler = () => {
       alert(
         'harap isi Formulir Pembelian sebelum masuk ke keranjang atau sebelum melakukan pemesanan'
       );
-      return <Redirect to={`/formulir-pembelian`} />;
+      return <Redirect to={`/toko-mulyasari-web/formulir-pembelian`} />;
     } else if (JSON.parse(Cookies.get('productCart')).length === 1) {
       alert('anda belum memasukan apapun ke keranjang');
-      return <Redirect to={`/product`} />;
+      return <Redirect to={`/toko-mulyasari-web/product`} />;
     } else if (JSON.parse(Cookies.get('productCart')).length > 1) {
       return <Route {...props} />;
     }
@@ -33,35 +33,35 @@ const RoutesHandler = () => {
     <BrowserRouter>
       <DataProvider>
         <Switch>
-          <Route exact path={`/`}>
+          <Route exact path={`/toko-mulyasari-web/`}>
             <LandingPage />
           </Route>
-          <Route exact path={`/product`}>
+          <Route exact path={`/toko-mulyasari-web/product`}>
             <LayoutComponent>
               <ProductPage />
             </LayoutComponent>
           </Route>
-          <Route exact path={`/detail-product/:slug`}>
+          <Route exact path={`/toko-mulyasari-web/detail-product/:slug`}>
             <LayoutComponent>
               <DetailProduct />
             </LayoutComponent>
           </Route>
-          <Route exact path={`/formulir-pembelian`}>
+          <Route exact path={`/toko-mulyasari-web/formulir-pembelian`}>
             <LayoutComponent>
               <FormPembelian />
             </LayoutComponent>
           </Route>
-          <Route exact path={`/faq-page`}>
+          <Route exact path={`/toko-mulyasari-web/faq-page`}>
             <LayoutComponent>
               <FaqPage />
             </LayoutComponent>
           </Route>
-          <Route exact path={`/tentang-kami`}>
+          <Route exact path={`/toko-mulyasari-web/tentang-kami`}>
             <LayoutComponent>
               <TentangKamiPage />
             </LayoutComponent>
           </Route>
-          <KeranjangRoute exact path={`/keranjang`}>
+          <KeranjangRoute exact path={`/toko-mulyasari-web/keranjang`}>
             <LayoutComponent>
               <KeranjangPage />
             </LayoutComponent>
